@@ -14,6 +14,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.example.tripjournal.data.database.TripJournalDatabase
 import com.example.tripjournal.data.importer.TripJsonImporter
 import com.example.tripjournal.domain.ImportResult
+import com.example.tripjournal.data.preferences.TripDateFormat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -65,6 +66,14 @@ class SettingsManager private constructor(context: Context) {
         .map { it[Keys.DISTANCE_UNIT] ?: UNIT_KM }
         .distinctUntilChanged()
 
+    val dateFormat: Flow<TripDateFormat> = preferences
+        .map { stored ->
+            stored[Keys.DATE_FORMAT]?.let { value ->
+                TripDateFormat.values().firstOrNull { it.name == value }
+            } ?: DATE_FORMAT_DEFAULT
+        }
+        .distinctUntilChanged()
+
     suspend fun setThemeMode(mode: Int) {
         dataStore.edit { it[Keys.THEME_MODE] = mode }
     }
@@ -79,6 +88,10 @@ class SettingsManager private constructor(context: Context) {
 
     suspend fun setDistanceUnit(unit: String) {
         dataStore.edit { it[Keys.DISTANCE_UNIT] = unit }
+    }
+
+    suspend fun setDateFormat(format: TripDateFormat) {
+        dataStore.edit { it[Keys.DATE_FORMAT] = format.name }
     }
 
     /**
@@ -101,6 +114,7 @@ class SettingsManager private constructor(context: Context) {
         val DEFAULT_SORT = stringPreferencesKey("pref_default_sort")
         val CONFIRM_DELETE = booleanPreferencesKey("pref_confirm_delete")
         val DISTANCE_UNIT = stringPreferencesKey("pref_distance_unit")
+        val DATE_FORMAT = stringPreferencesKey("pref_date_format")
     }
 
     companion object {
@@ -118,6 +132,8 @@ class SettingsManager private constructor(context: Context) {
 
         const val UNIT_KM = "KM"
         const val UNIT_MILES = "MILES"
+
+        val DATE_FORMAT_DEFAULT = TripDateFormat.DAY_MONTH_YEAR
 
         /** Convertit le mode de thème enregistré en mode nuit AppCompat. */
         fun toNightMode(mode: Int): Int = when (mode) {

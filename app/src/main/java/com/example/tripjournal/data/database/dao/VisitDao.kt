@@ -46,4 +46,3 @@ interface VisitDao {
     @Delete
     suspend fun delete(visit: Visit)
 }
-
