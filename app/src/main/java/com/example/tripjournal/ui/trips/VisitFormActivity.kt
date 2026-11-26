@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.tripjournal.R
+import com.example.tripjournal.ui.settings.deleteWithOptionalConfirmation
 import com.example.tripjournal.data.database.TripJournalDatabase
 import com.example.tripjournal.data.repository.PlaceRepository
 import com.example.tripjournal.data.repository.VisitRepository
@@ -58,7 +59,9 @@ class VisitFormActivity : AppCompatActivity() {
         findViewById<Button>(R.id.saveVisitButton).setOnClickListener {
             viewModel.save(notesInput.text?.toString().orEmpty())
         }
-        deleteButton.setOnClickListener { viewModel.delete() }
+        deleteButton.setOnClickListener {
+            deleteWithOptionalConfirmation(R.string.delete_visit_confirm) { viewModel.delete() }
+        }
 
         // Après une rotation, le calendrier est recréé : on le rebranche.
         @Suppress("UNCHECKED_CAST")

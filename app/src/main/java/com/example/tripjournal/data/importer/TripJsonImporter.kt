@@ -8,6 +8,8 @@ import com.example.tripjournal.domain.TripImport
 import com.example.tripjournal.domain.TripRecord
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 
@@ -16,16 +18,23 @@ class TripJsonImporter(
     private val tripDao: TripDao
 ) {
 
-    /** Importe le JSON une seule fois (au premier lancement). Retourne null si déjà fait. */
-    suspend fun importIfNeeded(): ImportResult? = withContext(Dispatchers.IO) {
+    /**
+     * Importe le JSON une seule fois (au premier lancement). Retourne null si déjà fait.
+     * Le verrou empêche deux écrans de lancer l'import en même temps : sans lui, les deux
+     * appels voient une base vide et insèrent chacun les voyages (doublons).
+     */
+    suspend fun importIfNeeded(): ImportResult? = importLock.withLock { doImport() }
+
+    private suspend fun doImport(): ImportResult? = withContext(Dispatchers.IO) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         if (prefs.getBoolean(KEY_DONE, false)) return@withContext null
 
         val json = context.assets.open(FILE).bufferedReader().use { it.readText() }
         val result = TripImport.prepare(parse(json), tripDao.getAllTrips().first())
-        result.toInsert.forEach { tripDao.insertTrip(it) }
+        // Une seule transaction : les écrans voient les voyages arriver d'un coup, pas un par un.
+        tripDao.insertTrips(result.toInsert)
 
-        prefs.edit().putBoolean(KEY_DONE, true).apply()
+        prefs.edit().putBoolean(KEY_DONE, true).commit()
         Log.i(TAG, "Import : ${result.toInsert.size} ajoutés, ${result.invalid} invalides, ${result.duplicates} doublons")
         result
     }
@@ -49,5 +58,8 @@ class TripJsonImporter(
         private const val FILE = "trips_seed.json"
         private const val PREFS = "trip_import"
         private const val KEY_DONE = "seed_imported"
+
+        /** Partagé par toutes les instances : un seul import à la fois dans l'application. */
+        private val importLock = Mutex()
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".TripJournalApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,23 +16,25 @@
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
-
-        </activity>
-
-        <!-- Écrans des lieux (Yazid) -->
-        <activity android:name=".ui.places.PlaceListActivity" android:exported="true" />
-        <activity android:name=".ui.places.PlaceFormActivity" android:exported="false" />
-        <activity android:name=".ui.trips.TripDetailActivity" android:exported="true" />
-        <activity android:name=".ui.trips.VisitFormActivity" android:exported="false" />
-        <activity
-            android:name=".ui.trips.TripListActivity"
-            android:exported="true">
+            <!-- Menu principal : écran de démarrage, mène à tous les autres écrans -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Écrans des lieux et voyages -->
+        <activity android:name=".ui.places.PlaceListActivity" android:exported="true" />
+        <activity android:name=".ui.places.PlaceFormActivity" android:exported="false" />
+        <activity android:name=".ui.trips.TripDetailActivity" android:exported="true" />
+        <activity android:name=".ui.trips.VisitFormActivity" android:exported="false" />
+        <activity android:name=".ui.trips.TripListActivity" android:exported="true" />
         <activity android:name=".ui.trips.TripFormActivity" android:exported="false" />
+
+        <!-- Écrans de Fabrice (Préférences, Catalogue Paging 3, Statistiques) -->
+        <activity android:name=".ui.settings.SettingsActivity" android:exported="true" />
+        <activity android:name=".ui.catalog.CatalogActivity" android:exported="true" />
+        <activity android:name=".ui.statistics.StatisticsActivity" android:exported="true" />
 
     </application>
 

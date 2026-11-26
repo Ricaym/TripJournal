@@ -13,6 +13,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.tripjournal.R
+import com.example.tripjournal.ui.settings.deleteWithOptionalConfirmation
 import com.example.tripjournal.data.database.TripJournalDatabase
 import com.example.tripjournal.data.repository.PlaceRepository
 import com.google.android.material.snackbar.Snackbar
@@ -60,7 +61,9 @@ class PlaceFormActivity : AppCompatActivity() {
                 countryInput.text.toString(), descriptionInput.text.toString()
             )
         }
-        deleteButton.setOnClickListener { viewModel.delete() }
+        deleteButton.setOnClickListener {
+            deleteWithOptionalConfirmation(R.string.delete_place_confirm) { viewModel.delete() }
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

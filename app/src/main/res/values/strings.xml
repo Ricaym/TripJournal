@@ -36,5 +36,70 @@
     <string name="trip_duplicate">Un voyage avec ce nom et cette date de départ existe déjà.</string>
     <string name="edit_trip">Modifier</string>
     <string name="delete_trip_confirm">Supprimer ce voyage et toutes ses visites ?</string>
+    <string name="delete_place_confirm">Supprimer ce lieu ?</string>
+    <string name="delete_visit_confirm">Supprimer cette visite de l\'itinéraire ?</string>
     <string name="trips_imported">%1$d voyages importés (%2$d invalides, %3$d doublons ignorés)</string>
+
+    <!-- Paramètres et Réglages (Fabrice) -->
+    <string name="settings_title">Réglages &amp; Paramètres</string>
+    <string name="theme_setting">Thème d\'affichage</string>
+    <string name="theme_system">Suivre le système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+    <string name="default_sort_setting">Tri par défaut des voyages</string>
+    <string name="sort_date_desc">Date de départ (décroissante)</string>
+    <string name="sort_date_asc">Date de départ (croissante)</string>
+    <string name="sort_name_asc">Nom du voyage (A-Z)</string>
+    <string name="sort_destination_asc">Destination (A-Z)</string>
+    <string name="confirm_delete_setting">Confirmer la suppression</string>
+    <string name="confirm_delete_desc">Afficher un dialogue de confirmation avant la suppression</string>
+    <string name="distance_unit_setting">Unité de distance</string>
+    <string name="unit_km">Kilomètres (km)</string>
+    <string name="unit_miles">Miles (mi)</string>
+    <string name="data_management">Gestion des données</string>
+    <string name="reset_data">Réinitialiser et re-importer le JSON seed</string>
+    <string name="reset_data_confirm">Voulez-vous réinitialiser toutes les données et re-importer les 22 voyages d\'origine ?</string>
+    <string name="about_app">À propos de TripJournal</string>
+    <string name="about_description">TripJournal v1.0 - Carnet de voyage Android (Groupe 1).\nDéveloppeur 4 : Fabrice Kouadjeu (Préférences, Paging 3, Intégration &amp; Stats).</string>
+    <string name="cancel">Annuler</string>
+    <string name="confirm">Confirmer</string>
+
+    <!-- Catalogue Paging 3 (Fabrice) -->
+    <string name="catalog_title">Catalogue des Voyages</string>
+    <string name="search_hint">Rechercher par nom ou destination...</string>
+    <string name="retry">Réessayer</string>
+    <string name="error_loading_trips">Erreur lors du chargement des voyages.</string>
+    <string name="no_matching_trips">Aucun voyage ne correspond à votre recherche.</string>
+
+    <!-- Statistiques (Fabrice) -->
+    <string name="stats_title">Statistiques du Carnet</string>
+    <string name="total_trips">Nombre total de voyages</string>
+    <string name="total_places">Lieux enregistrés</string>
+    <string name="total_visits">Visites planifiées</string>
+    <string name="avg_visits_per_trip">Moyenne de visites par voyage</string>
+    <string name="stats_empty">Aucun voyage pour l\'instant : les statistiques apparaîtront dès votre premier voyage.</string>
+    <string name="stats_travel_time">Temps de voyage</string>
+    <string name="stats_total_days">%1$d jours de voyage au total</string>
+    <string name="stats_longest_trip">Plus long voyage : %1$s (%2$d jours)</string>
+    <string name="stats_status">Statut des voyages</string>
+    <string name="stats_status_values">En cours : %1$d\nÀ venir : %2$d\nTerminés : %3$d\nFavoris : %4$d</string>
+    <string name="stats_top_countries">Pays les plus visités</string>
+    <string name="stats_ranked_item">%1$d. %2$s (%3$d voyage(s))</string>
+    <string name="stats_most_visited_place">Lieu le plus visité</string>
+    <string name="stats_place_visits">%1$s (%2$d visite(s))</string>
+    <string name="stats_no_visits">Aucune visite enregistrée pour l\'instant.</string>
+
+    <!-- Hub Principal / Navigation (Fabrice) -->
+    <string name="dashboard_welcome">Carnet de Voyage</string>
+    <string name="dashboard_subtitle">Gérez vos voyages, vos lieux et vos itinéraires</string>
+    <string name="nav_catalog">Catalogue des voyages</string>
+    <string name="nav_trips">Mes Voyages</string>
+    <string name="nav_places">Mes Lieux</string>
+    <string name="nav_stats">Statistiques</string>
+    <string name="nav_settings">Réglages</string>
+    <string name="nav_catalog_desc">Rechercher, trier et parcourir tous les voyages</string>
+    <string name="nav_trips_desc">Créer, modifier et organiser vos itinéraires</string>
+    <string name="nav_places_desc">Gérer les lieux à associer à vos visites</string>
+    <string name="nav_stats_desc">Jours de voyage, pays, lieux les plus visités</string>
+    <string name="nav_settings_desc">Thème, tri par défaut et gestion des données</string>
 </resources>

@@ -15,8 +15,8 @@ import com.example.tripjournal.R
 import com.example.tripjournal.data.database.TripJournalDatabase
 import com.example.tripjournal.data.repository.TripRepository
 import com.example.tripjournal.ui.places.applySystemBarPadding
+import com.example.tripjournal.ui.settings.deleteWithOptionalConfirmation
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.flow.combine
@@ -115,11 +115,7 @@ class TripFormActivity : AppCompatActivity() {
     }
 
     private fun confirmDelete() {
-        MaterialAlertDialogBuilder(this)
-            .setMessage(R.string.delete_trip_confirm)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.delete) { _, _ -> viewModel.delete() }
-            .show()
+        deleteWithOptionalConfirmation(R.string.delete_trip_confirm) { viewModel.delete() }
     }
 
     private fun snack(message: Int) {
