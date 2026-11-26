@@ -1,0 +1,28 @@
+[
+  {"name": "Escapade à Barcelone", "destination": "Barcelone, Espagne", "startDate": "2025-04-12", "endDate": "2025-04-16", "description": "Gaudí, tapas et plage."},
+  {"name": "Road trip en Écosse", "destination": "Édimbourg, Royaume-Uni", "startDate": "2025-05-03", "endDate": "2025-05-12", "description": "Highlands et châteaux."},
+  {"name": "Vacances à Rome", "destination": "Rome, Italie", "startDate": "2025-06-07", "endDate": "2025-06-14", "description": "Colisée, Vatican et gelato."},
+  {"name": "Week-end à Amsterdam", "destination": "Amsterdam, Pays-Bas", "startDate": "2025-06-20", "endDate": "2025-06-22", "description": "Canaux et musées."},
+  {"name": "Été en Grèce", "destination": "Athènes, Grèce", "startDate": "2025-07-05", "endDate": "2025-07-19", "description": "Acropole puis les Cyclades."},
+  {"name": "Découverte de Tokyo", "destination": "Tokyo, Japon", "startDate": "2025-08-01", "endDate": "2025-08-15", "description": "Shibuya, Asakusa et Akihabara."},
+  {"name": "Randonnée dans les Alpes", "destination": "Chamonix, France", "startDate": "2025-08-20", "endDate": "2025-08-25", "description": "Tour du Mont-Blanc partiel."},
+  {"name": "Séjour à New York", "destination": "New York, États-Unis", "startDate": "2025-09-10", "endDate": "2025-09-17", "description": "Manhattan et Brooklyn."},
+  {"name": "Marrakech en famille", "destination": "Marrakech, Maroc", "startDate": "2025-10-18", "endDate": "2025-10-25", "description": "Médina, souks et désert d'Agafay."},
+  {"name": "Marché de Noël à Strasbourg", "destination": "Strasbourg, France", "startDate": "2025-12-12", "endDate": "2025-12-14", "description": "Vin chaud et bredele."},
+  {"name": "Ski à Val Thorens", "destination": "Val Thorens, France", "startDate": "2026-02-14", "endDate": "2026-02-21", "description": "Une semaine aux 3 Vallées."},
+  {"name": "Printemps à Kyoto", "destination": "Kyoto, Japon", "startDate": "2026-03-28", "endDate": "2026-04-05", "description": "Cerisiers en fleurs et temples."},
+  {"name": "Week-end à Bruxelles", "destination": "Bruxelles, Belgique", "startDate": "2026-04-18", "endDate": "2026-04-19", "description": "Grand-Place et gaufres."},
+  {"name": "Côte amalfitaine", "destination": "Amalfi, Italie", "startDate": "2026-05-23", "endDate": "2026-05-30", "description": "Positano, Ravello et Capri."},
+  {"name": "Islande en van", "destination": "Reykjavik, Islande", "startDate": "2026-06-15", "endDate": "2026-06-28", "description": "Route 1, cascades et glaciers."},
+  {"name": "Festival à Édimbourg", "destination": "Édimbourg, Royaume-Uni", "startDate": "2026-08-07", "endDate": "2026-08-12", "description": "Fringe Festival."},
+  {"name": "Croisière sur le Nil", "destination": "Louxor, Égypte", "startDate": "2026-10-03", "endDate": "2026-10-10", "description": "De Louxor à Assouan."},
+  {"name": "Week-end à Berlin", "destination": "Berlin, Allemagne", "startDate": "2026-11-06", "endDate": "2026-11-08", "description": "Mur, musées et street food."},
+  {"name": "Nouvel An à Prague", "destination": "Prague, Tchéquie", "startDate": "2026-12-29", "endDate": "2027-01-02", "description": "Feux d'artifice sur la Vltava."},
+  {"name": "Montréal sous la neige", "destination": "Montréal, Canada", "startDate": "2027-01-20", "endDate": "2027-01-27", "description": "Vieux-Montréal et poutine."},
+  {"name": "Carnaval de Venise", "destination": "Venise, Italie", "startDate": "2027-02-06", "endDate": "2027-02-10", "description": "Masques et gondoles."},
+  {"name": "Tour du Portugal", "destination": "Porto, Portugal", "startDate": "2027-04-10", "endDate": "2027-04-20", "description": "De Porto à l'Algarve."},
+
+  {"name": "", "destination": "Nice, France", "startDate": "2026-07-01", "endDate": "2026-07-05", "description": "INVALIDE : nom vide."},
+  {"name": "Voyage à l'envers", "destination": "Lyon, France", "startDate": "2026-07-10", "endDate": "2026-07-05", "description": "INVALIDE : fin avant le début."},
+  {"name": "vacances à rome", "destination": "Rome, Italie", "startDate": "2025-06-07", "endDate": "2025-06-10", "description": "DOUBLON de « Vacances à Rome »."}
+]

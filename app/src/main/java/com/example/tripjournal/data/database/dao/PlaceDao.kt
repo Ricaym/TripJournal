@@ -13,6 +13,9 @@ interface PlaceDao {
     @Query("SELECT * FROM places ORDER BY name COLLATE NOCASE ASC, id ASC")
     fun observeAll(): Flow<List<Place>>
 
+    @Query("SELECT COUNT(*) FROM places")
+    fun getPlaceCount(): Flow<Int>
+
     @Query("SELECT * FROM places WHERE id = :id LIMIT 1")
     suspend fun getById(id: Long): Place?
 
