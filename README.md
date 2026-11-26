@@ -256,7 +256,7 @@ Ou dans Android Studio : clic droit sur `app/src/test` ou `app/src/androidTest` 
 
 | Membre | Branche | Contributions |
 |---|---|---|
-| **Irina** | `feature/trips-database-irina` | Base Room `TripJournalDatabase`, `TripDao` |
+| **Irina** | `feature/trips-database-irina` | Base Room `TripJournalDatabase`, `TripDao` ; réglage du format de date relié à l'interface et appliqué immédiatement aux dates des voyages via DataStore et Flow ; correction des libellés du test Espresso de navigation |
 | **Yazid** | `feature/places-visits-yazid` | Places/Visits : DAO, repositories, règles métier et tests JUnit ; écrans lieux (CRUD) ; détail du voyage et itinéraire par jour ; formulaire de visite ; repository, validation, liste et formulaire des voyages ; import JSON initial et ses tests ; tests Espresso des lieux |
 | **Aymeric** | `feature/catalog-stats-aymeric` | Initialisation du projet, squelette Catalogue / Statistiques, revue et fusion des Pull Requests |
 | **Fabrice** | `feature/settings-integration-fabrice` | Réglages en Preferences DataStore (thème, tri, confirmation de suppression, unité) ; catalogue Paging 3 avec recherche et tri ; écran Statistiques et `TravelStatsCalculator` + tests JUnit ; menu principal ; tests Espresso de navigation ; correction des bugs d'import ; intégration et README |
