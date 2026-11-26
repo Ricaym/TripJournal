@@ -106,4 +106,8 @@
     <string name="nav_places_desc">Gérer les lieux à associer à vos visites</string>
     <string name="nav_stats_desc">Jours de voyage, pays, lieux les plus visités</string>
     <string name="nav_settings_desc">Thème, tri par défaut et gestion des données</string>
+    <string name="filter_all">Tous</string>
+    <string name="filter_upcoming">À venir</string>
+    <string name="filter_ongoing">En cours</string>
+    <string name="filter_past">Terminés</string>
 </resources>

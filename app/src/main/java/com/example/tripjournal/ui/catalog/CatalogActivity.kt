@@ -21,6 +21,7 @@ import com.example.tripjournal.data.repository.TripRepository
 import com.example.tripjournal.data.settings.SettingsManager
 import com.example.tripjournal.ui.places.applySystemBarPadding
 import com.example.tripjournal.ui.trips.TripDetailActivity
+import com.example.tripjournal.domain.TripStatusFilter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.ChipGroup
@@ -49,6 +50,7 @@ class CatalogActivity : AppCompatActivity() {
 
         val searchInput = findViewById<EditText>(R.id.catalogSearchInput)
         val chipGroup = findViewById<ChipGroup>(R.id.catalogSortChipGroup)
+        val filterGroup = findViewById<ChipGroup>(R.id.catalogFilterChipGroup)
         val recyclerView = findViewById<RecyclerView>(R.id.catalogRecyclerView)
         val progressBar = findViewById<ProgressBar>(R.id.catalogProgressBar)
         val emptyState = findViewById<View>(R.id.catalogEmptyState)
@@ -84,6 +86,17 @@ class CatalogActivity : AppCompatActivity() {
             viewModel.setSortOrder(sort)
         }
 
+        // Écouteur de filtre par statut
+        filterGroup.setOnCheckedStateChangeListener { _, checkedIds ->
+            val filter = when {
+                checkedIds.contains(R.id.chipFilterUpcoming) -> TripStatusFilter.UPCOMING
+                checkedIds.contains(R.id.chipFilterOngoing) -> TripStatusFilter.ONGOING
+                checkedIds.contains(R.id.chipFilterPast) -> TripStatusFilter.PAST
+                else -> TripStatusFilter.ALL
+            }
+            viewModel.setStatusFilter(filter)
+        }
+
         retryButton.setOnClickListener { adapter.retry() }
 
         // Écoute des états de chargement Paging 3
@@ -111,6 +124,18 @@ class CatalogActivity : AppCompatActivity() {
                             else -> R.id.chipSortDate
                         }
                         if (chipGroup.checkedChipId != chipId) chipGroup.check(chipId)
+                    }
+                }
+                launch {
+                    // La puce cochée reflète le filtre actif (conservé à la rotation)
+                    viewModel.statusFilter.collect { filter ->
+                        val chipId = when (filter) {
+                            TripStatusFilter.UPCOMING -> R.id.chipFilterUpcoming
+                            TripStatusFilter.ONGOING -> R.id.chipFilterOngoing
+                            TripStatusFilter.PAST -> R.id.chipFilterPast
+                            TripStatusFilter.ALL -> R.id.chipFilterAll
+                        }
+                        if (filterGroup.checkedChipId != chipId) filterGroup.check(chipId)
                     }
                 }
                 launch {
