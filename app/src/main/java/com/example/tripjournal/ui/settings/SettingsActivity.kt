@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.tripjournal.R
 import com.example.tripjournal.data.settings.SettingsManager
+import com.example.tripjournal.data.preferences.TripDateFormat
 import com.example.tripjournal.ui.places.applySystemBarPadding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
@@ -37,6 +38,7 @@ class SettingsActivity : AppCompatActivity() {
         val themeRadioGroup = findViewById<RadioGroup>(R.id.themeRadioGroup)
         val sortRadioGroup = findViewById<RadioGroup>(R.id.sortRadioGroup)
         val unitRadioGroup = findViewById<RadioGroup>(R.id.unitRadioGroup)
+        val dateFormatRadioGroup = findViewById<RadioGroup>(R.id.dateFormatRadioGroup)
         val confirmDeleteSwitch = findViewById<SwitchMaterial>(R.id.confirmDeleteSwitch)
         val resetDataButton = findViewById<MaterialButton>(R.id.resetDataButton)
 
@@ -69,6 +71,15 @@ class SettingsActivity : AppCompatActivity() {
             if (viewModel.distanceUnit.value != unit) {
                 viewModel.setDistanceUnit(unit)
             }
+        }
+
+        dateFormatRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            val format = when (checkedId) {
+                R.id.dateFormatMonthDayYear -> TripDateFormat.MONTH_DAY_YEAR
+                R.id.dateFormatIso -> TripDateFormat.ISO
+                else -> TripDateFormat.DAY_MONTH_YEAR
+            }
+            if (viewModel.dateFormat.value != format) viewModel.setDateFormat(format)
         }
 
         confirmDeleteSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -117,6 +128,16 @@ class SettingsActivity : AppCompatActivity() {
                         } else {
                             unitRadioGroup.check(R.id.unitKm)
                         }
+                    }
+                }
+                launch {
+                    viewModel.dateFormat.filterNotNull().collect { format ->
+                        val checkedId = when (format) {
+                            TripDateFormat.MONTH_DAY_YEAR -> R.id.dateFormatMonthDayYear
+                            TripDateFormat.ISO -> R.id.dateFormatIso
+                            TripDateFormat.DAY_MONTH_YEAR -> R.id.dateFormatDayMonthYear
+                        }
+                        dateFormatRadioGroup.check(checkedId)
                     }
                 }
                 launch {

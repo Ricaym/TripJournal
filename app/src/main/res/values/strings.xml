@@ -51,6 +51,10 @@
     <string name="sort_date_asc">Date de départ (croissante)</string>
     <string name="sort_name_asc">Nom du voyage (A-Z)</string>
     <string name="sort_destination_asc">Destination (A-Z)</string>
+    <string name="date_format_setting">Format de date</string>
+    <string name="date_format_day_month_year">Jour / mois / année (04/12/2026)</string>
+    <string name="date_format_month_day_year">Mois / jour / année (12/04/2026)</string>
+    <string name="date_format_iso">Année-mois-jour (2026-12-04)</string>
     <string name="confirm_delete_setting">Confirmer la suppression</string>
     <string name="confirm_delete_desc">Afficher un dialogue de confirmation avant la suppression</string>
     <string name="distance_unit_setting">Unité de distance</string>

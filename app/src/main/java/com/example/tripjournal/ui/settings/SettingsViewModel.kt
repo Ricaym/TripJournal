@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.tripjournal.data.settings.SettingsManager
+import com.example.tripjournal.data.preferences.TripDateFormat
 import com.example.tripjournal.domain.ImportResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -25,6 +26,7 @@ class SettingsViewModel(
     val defaultSort: StateFlow<String?> = settingsManager.defaultSort.asState()
     val confirmDelete: StateFlow<Boolean?> = settingsManager.confirmDelete.asState()
     val distanceUnit: StateFlow<String?> = settingsManager.distanceUnit.asState()
+    val dateFormat: StateFlow<TripDateFormat?> = settingsManager.dateFormat.asState()
 
     private val _resetResult = MutableSharedFlow<ImportResult?>()
     val resetResult: SharedFlow<ImportResult?> = _resetResult
@@ -43,6 +45,10 @@ class SettingsViewModel(
 
     fun setDistanceUnit(unit: String) {
         viewModelScope.launch { settingsManager.setDistanceUnit(unit) }
+    }
+
+    fun setDateFormat(format: TripDateFormat) {
+        viewModelScope.launch { settingsManager.setDateFormat(format) }
     }
 
     fun resetData() {

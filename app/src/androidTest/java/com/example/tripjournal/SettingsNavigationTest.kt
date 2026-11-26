@@ -16,10 +16,10 @@ class SettingsNavigationTest {
     fun settingsScreenAndPreferencesRemainAvailableAfterRecreation() {
         val scenario = ActivityScenario.launch(MainActivity::class.java)
         try {
-            onView(withText("Paramètres")).perform(click())
-            onView(withText("Tri par défaut")).check(matches(isDisplayed()))
+            onView(withText("Réglages")).perform(click())
+            onView(withText("Tri par défaut des voyages")).check(matches(isDisplayed()))
             scenario.recreate()
-            onView(withText("Tri par défaut")).check(matches(isDisplayed()))
+            onView(withText("Tri par défaut des voyages")).check(matches(isDisplayed()))
             onView(withText("Format de date")).check(matches(isDisplayed()))
         } finally {
             scenario.close()
