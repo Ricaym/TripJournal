@@ -250,7 +250,7 @@ Outils utilisés : Logcat (filtre `TripJsonImporter`, `SettingsManager`), points
 | Membre | Branche | Contribution |
 | --- | --- | --- |
 | Aymeric | `feature/catalog-stats-aymeric` | Catalogue et statistiques de voyage |
-| _(À COMPLÉTER)_ | `feature/launcher-trip-list` | Écran de lancement et liste des voyages |
+| Global | `feature/launcher-trip-list` | Écran de lancement et liste des voyages |
 | Yazid | `feature/places-visits-yazid` | Lieux et visites |
 | Fabrice | `feature/settings-integration-fabrice` | Réglages (DataStore) et intégration |
 | Irina | `feature/trips-database-irina` | Base de données des voyages (Room) |
