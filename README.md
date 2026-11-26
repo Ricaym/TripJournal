@@ -44,9 +44,9 @@ Projet final du module **E5 — Mobile Apps Development** (ESTIAM), présenté l
 - **Lieux** : créer, lire, modifier, supprimer. Un lieu utilisé par au moins une visite ne peut pas être supprimé.
 - **Visites** : créer, lire, modifier, supprimer, rattachées à un voyage et à un lieu.
 
-### Recherche, tri et pagination
+### Recherche, filtre, tri et pagination
 
-Le catalogue est paginé avec **Paging 3** (pages de 10). La recherche porte sur le nom et la destination et se met à jour à la frappe. Quatre tris sont proposés : date décroissante, date croissante, nom (A-Z), destination (A-Z). Le tri par défaut vient des réglages.
+Le catalogue est paginé avec **Paging 3** (pages de 10). La recherche porte sur le nom et la destination et se met à jour à la frappe. Un **filtre par statut** (Tous / À venir / En cours / Terminés) s'applique au flux paginé (`PagingData.filter` + `TripFilter`). Quatre tris sont proposés : date décroissante, date croissante, nom (A-Z), destination (A-Z). Le tri par défaut vient des réglages. Recherche, filtre et tri se combinent, et le filtre choisi est conservé à la rotation.
 
 ### Fonctionnalités métier
 
@@ -187,7 +187,7 @@ Au premier lancement, les voyages du fichier JSON sont importés automatiquement
 
 ## 7. Tests
 
-### Tests unitaires JUnit (18)
+### Tests unitaires JUnit (20)
 
 ```powershell
 .\gradlew.bat :app:testDebugUnitTest
@@ -201,6 +201,7 @@ Rapport : `app/build/reports/tests/testDebugUnitTest/index.html`
 | `VisitRulesTest` | 6 | Visites dans / hors du voyage, numéro de jour, itinéraire groupé par jour, voyage raccourci, validation d'un lieu |
 | `TripImportTest` | 3 | Enregistrement valide, enregistrements invalides rejetés, doublons ignorés |
 | `TripRulesTest` | 2 | Plage de dates, tri et affichage des dates en UTC |
+| `TripFilterTest` | 2 | Filtre du catalogue : tous / à venir / en cours / terminés, voyage commençant ou finissant aujourd'hui = en cours |
 
 ### Tests UI Espresso (7)
 
@@ -250,7 +251,8 @@ Outils utilisés : Logcat (filtre `TripJsonImporter`, `SettingsManager`), points
 | Membre | Branche | Contribution |
 | --- | --- | --- |
 | Aymeric | `feature/catalog-stats-aymeric` | Catalogue et statistiques de voyage |
-| Global | `feature/launcher-trip-list` | Écran de lancement et liste des voyages |
+| Global | `feature/launcher-trip-list`| Écran de lancement et liste des voyages |
+| Global | `feature/catalog-filter`| filtre par statut du catalogue |
 | Yazid | `feature/places-visits-yazid` | Lieux et visites |
 | Fabrice | `feature/settings-integration-fabrice` | Réglages (DataStore) et intégration |
 | Irina | `feature/trips-database-irina` | Base de données des voyages (Room) |
